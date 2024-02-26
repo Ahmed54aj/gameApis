@@ -1,0 +1,270 @@
+/* themes
+dark purple: #1C1948
+blue: #494FA5
+lightblue: #B6E9FA
+pinkish: #AB7897
+white: #F9FAFC
+*/
+#mhw-intro-image {
+    height: 20vh;
+    width: 100vw;
+    
+}
+#mhw-weapons-intro {
+position: relative;
+display: flex;
+flex-direction: column;
+justify-content: center;
+
+}
+#mhw-weapons-title {
+    color: #1C1948;
+    text-shadow: 0 0 2px #1C1948, 0 0 4px #494FA5, 0 0 6px #AB7897, 0 0 10px #F9FAFC;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+/* starting area for space */
+#radial-menu-area {
+    position: relative;
+    display: flex;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 60vh;
+    min-height: 61vh;
+}
+#radial-center {
+    position: absolute;
+    background-image: url('../../assets//MonsterHunter/mhwLogo.png');
+    background-position: center;
+    background-color: transparent;
+    background-size: 200px 180px;
+    background-repeat: no-repeat;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    animation-name: fadeInRadialCenter;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    transition: 0.3s ease-in-out all;
+}
+
+@keyframes fadeInRadialCenter {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInRadialBtns {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+
+#radial-center:hover {
+    border: 1px solid #1C1948;
+    box-shadow: 0 0 2px #1C1948, 0 0 4px #494FA5, 0 0 6px #AB7897, 0 0 10px #F9FAFC;
+}
+.radial-btns {
+    opacity: 0.5;
+    padding: 2rem;
+    border: 1px solid white;
+    border-radius: 50%;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+background-color: transparent;
+animation-name: fadeInRadialBtns;
+animation-duration: 1s;
+animation-delay: 0s;
+animation-iteration-count: 1;
+transition: 0.3s ease-in-out all;
+}
+.radial-btns:hover {
+    opacity: 1;
+    background-color: #AB7897;
+    border: 1px solid #1C1948;
+    box-shadow: 0 0 2px #1C1948, 0 0 4px #494FA5, 0 0 6px #AB7897, 0 0 10px #F9FAFC;
+} 
+
+#weapon-list-section {
+    padding-top: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    min-height: 81vh;
+}
+
+.weapon-image {
+    height: 100px;
+    width: 100px;
+}
+
+#weapon-list-section table {
+    background-color: rgba(28, 25, 72, 0.5);
+    color: white;
+    text-shadow: 0px 0px 5px #AB7897, 0 0 6px #494FA5;
+    padding: 1rem;
+}
+
+#weapon-list-section table tr {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+td, th {
+    text-align: center;
+    padding: 1rem;
+}
+/* searching */
+#search-area {
+   display: flex;
+   flex-direction: column;
+   flex-wrap: wrap;
+   position: relative;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#weapon-search {
+    border: 1px solid #494FA5;
+    color: #494FA5;
+background-color: white;
+text-align: center;
+width: 50%;
+}
+
+#page-number-container, #pagination-btn-container {
+    display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   position: relative;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+}
+
+
+
+/* table */
+#weapon-list-section table {
+    border-radius: 20px;
+}
+
+
+.weapon-item:hover {
+background-color: rgba(28, 25, 72, 0.1);
+cursor: pointer;
+}
+
+/* modal */
+.modal-header, .jewel-slot {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+justify-content: center;
+    align-items: center;
+}
+
+.modal-title {
+    width: 100%;
+    text-align: center;
+}
+
+.slots-header {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slots-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+  .slot-jewel {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 50px;
+    width: 50px;
+  }
+
+  .jewel-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slot-number {
+    transform: translateY(0.2rem);
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 70%;
+    width: 5%;
+    padding: 1rem;
+    height: 5%;
+  }
+  #pagination-btn-container button {
+    background-color: #494FA5;
+    border: 1px solid white;
+    color: white;
+    margin: 0.3rem;
+    transition: 0.3s ease-in-out all;
+  }
+  #pagination-btn-container button:hover {
+background-color:transparent;
+color: #494FA5;
+border: 1px solid #494FA5;
+  }
+/* themes
+dark purple: #1C1948
+blue: #494FA5
+lightblue: #B6E9FA
+pinkish: #AB7897
+white: #F9FAFC
+*/

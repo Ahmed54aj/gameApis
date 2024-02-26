@@ -1,0 +1,81 @@
+#zelda-container, .row, #zelda-intro, #zelda-games-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ #zelda-container {
+    width: 100vw;
+    flex-direction: column;
+}
+
+#zelda-main {
+    background-color: black;
+}
+
+#zelda-intro {
+    width: 100%;
+    height: 15rem;
+    background-image: url('../assets/zelda.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 15rem;
+    background-blend-mode:lighten;
+}
+
+#zelda-intro h2 {
+    color: #FFF4DE;
+    text-shadow: 0 0 5px #030700;
+    background-color:rgba(86,183,199,0.5);
+    width: 20rem;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px #030700;
+}
+
+
+
+#zelda-games-list {
+    height: 100%;
+}
+
+#zelda-games-list button {
+    background-color: #47D297 ;
+    border: 1px solid black;
+    color: black;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    transition: 0.3s ease-in-out all;
+}
+
+#zelda-games-list button:hover {
+    background-color: transparent;
+    color: #FFF4DE;
+    box-shadow: 0 0 5px #47D297;
+    text-shadow: 0 0 5px #47D297, 0 0 10px #FFF4DE;
+    
+}
+
+#zelda-main .row {
+    width: 50vw;
+
+}
+
+.game-modal {
+    background-color: #FFF4DE;
+    box-shadow: 0 0 10px black;
+    margin-bottom: 0.5rem;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+
+/*
+ zelda colors:
+ green: #56B7C7
+  gold: #F8A600
+   zonai: #47D297 
+   letters: #FFF4DE
+    letter outline: #030700
+    */

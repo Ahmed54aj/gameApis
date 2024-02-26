@@ -1,0 +1,47 @@
+/* imports */
+@import url('./Header.css');
+@import url('./Footer.css');
+@import url('./Home.css');
+/* specific to game pages imports */
+@import url('./Zelda.css');
+@import url('./Valorant.css');
+/* monster hunter css */
+@import url('./MonsterHunter/mhwWeapons.css');
+
+/* main css */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+ main, footer {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+
+main {
+  height: 100%;
+}
+
+
+
+main section {
+  width: 100vw;
+}
+
+.intro {
+  height: 20vh;
+}

@@ -1,0 +1,28 @@
+#home-intro {
+    height: 20vh;
+    background-color: #277AC3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+#home-content {
+    background-color: 	black;
+    color: whitesmoke;
+    font-size: 2rem;
+    height: 100%;
+    text-align: center;
+}
+
+#home-content img {
+    height: 100%;
+    width: 100%;
+}
+
+.lottie-animation {
+    height: 100%;
+    width: 100%;
+}

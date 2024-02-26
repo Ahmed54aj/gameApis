@@ -1,0 +1,66 @@
+#valorant-main {
+    height: 100%;
+}
+
+#valorant-intro {
+    height: 10rem;
+    padding: 1rem;
+    text-align: center;
+    background: linear-gradient(#FD4556, black) ;
+}
+
+#valorant-agent-container {
+    background-color: black ;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+
+/* card */
+.agent-card {
+    display: flex;
+    align-items: center;
+  opacity: 0.3;
+  margin: 1rem;
+}
+/* name title */
+.agent-title, .agent-role {
+    text-align: center;
+    opacity: 0;
+}
+/* image */
+#valorant-main img {
+    height: 50%;
+    width: 50%;
+}
+
+/* all transitions */
+.agent-card:hover {
+    opacity: 1;
+}
+
+.agent-card:hover .agent-title, .agent-card:hover .agent-role {
+    opacity: 1;
+}
+.agent-card, .agent-title, .agent-role {
+    transition: 0.3s ease-in-out all;
+}
+
+/* modal */
+
+.ability-icons {
+    margin: 0.5rem;
+    height: 3rem;
+    width: 3rem;
+    background-color: rgba(0,0,0,.0.5);
+}
+
+.agent-port {
+    height: 30rem;
+    width: 30rem;
+}
+
+
+.modals p , .modals h4 {
+font-size: 0.75rem;
+}
