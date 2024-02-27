@@ -10,7 +10,7 @@ export default function HomeSection() {
         < >
         <div id='home-content'>
         <section id="home-intro">
-            <h2>Working with game APIs</h2>
+            <h2>Working with game APIs(testing deployment)</h2>
         </section>
         <section id="step-by-step">
            <Row>
