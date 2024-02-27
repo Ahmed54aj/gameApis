@@ -4,6 +4,7 @@ import Pokeball from './Pokeball';
 function Pokedex() {
   return (
     <>
+    Testing auto deployments
       <Pokeball />
     </>
   );
