@@ -31,11 +31,11 @@ return (
                 Monster Hunter World Weapons
               </NavDropdown.Item>
                 </NavDropdown>
-                {/* <NavDropdown title="Pokemon" id="basic-nav-dropdown">
+                <NavDropdown title="Pokemon" id="basic-nav-dropdown">
               <NavDropdown.Item href="/pokedex">
                 Pokedex
               </NavDropdown.Item>
-                </NavDropdown> */}
+                </NavDropdown>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
