@@ -8,6 +8,9 @@ import ny from './ny.png';
 import py from './py.png'; 
 import pz from './pz.png'; 
 import nz from './nz.png'; 
+import HelvetikerFont from "three/examples/fonts/helvetiker_regular.typeface.json";
+import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
+import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 function Pokeball() {
 useEffect(() => {
     // const pokeArea = document.getElementById('pokemon-section');
@@ -30,7 +33,7 @@ scene.background = texture;
 // 2) load the model
 const pokeball_loader = new GLTFLoader();
 let ball
-pokeball_loader.load('object.glb', function (gltf) {
+pokeball_loader.load( './object.glb', function (gltf) {
     ball = gltf.scene;
     ball.scale.set(1,  1,  1);
     ball.position.x = -5.4;
@@ -77,7 +80,47 @@ controls.autoRotate = true; // Optional, damping factor
 controls.screenSpacePanning = false; // Optional, enables screen-space panning
 controls.minDistance =  10; // Optional, minimum distance to the target
 controls.maxDistance =  50; // Optional, maximum distance to the target
-    function animate() {
+   
+
+// dealing with 3d text and its outline
+const text_loader = new FontLoader();
+const font = text_loader.parse(HelvetikerFont);
+const geometry = new TextGeometry("POKEMON API PROJECT", {
+  font: font,
+  size: window.innerWidth / 1200,
+  height: 0.3,
+  curveSegments: 12,
+  bevelEnabled: true,
+  bevelThickness: 0.03,
+  bevelSize: 0.02,
+  bevelOffset: 0,
+  bevelSegments: 5,
+});
+const textMaterial = new THREE.MeshBasicMaterial();
+textMaterial.color.setHex(0xff0000);
+const text = new THREE.Mesh(geometry, textMaterial);
+text.position.x = -(window.innerWidth / 150);
+text.position.y = 3;
+text.position.z = 1;
+scene.add(text);
+// Transparent Material for the Outline
+const outlineMaterial = new THREE.MeshBasicMaterial({
+    color: 0x000000, // Black color for the outline
+    transparent: true,
+    scale: 1.2,
+    opacity: 0.5, // Adjust the opacity to control the outline thickness
+   });
+   const outline = new THREE.Mesh(geometry, outlineMaterial);
+   outline.position.x = -(window.innerWidth / 150);
+   outline.position.y = 3;
+   outline.position.z = 1;
+   scene.add(outline);
+
+
+
+
+
+function animate() {
       requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);

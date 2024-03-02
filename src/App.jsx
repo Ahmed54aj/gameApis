@@ -9,6 +9,7 @@ import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
 import HomeSection from './components/pages/HomeSection';
 import Zelda from './components/pages/Zelda/Zelda';
 import Valorant from './components/pages/Valorant/Valorant';
+import Pokedex from './components/pages/Pokemon/Pokedex';
 // mhw weapons
 import { Provider } from 'react-redux';
 import monsterHunterWorldStore from './store/MonsterHunterWorldStore';
@@ -19,8 +20,7 @@ import WeaponList from './components/pages/MonsterHunter/MhwWeapons/weaponList';
 import { ZeldaProvider } from './Context/ZeldaContext';
 // valorant
 import { ValorantProvider } from './Context/ValorantContext';
-// pokemon pages
-import Pokedex from './components/pages/Pokemon/Pokedex';
+import { PokemonProvider } from './Context/Pokemon';
 // app component
 function App() {
   return (
@@ -35,7 +35,7 @@ function App() {
   <Route path="/valorant" element={<ValorantProvider><Valorant /></ValorantProvider>} />
   <Route path="/mhwWeapons" element={<Provider store={monsterHunterWorldStore}><MonsterHunterWorldWeapons/></Provider>} />
   <Route path="/mhwWeapons/weaponList" element={< WeaponList />} />
-  <Route path="/pokedex" element={<Pokedex />} />
+  <Route path="/pokedex" element={<PokemonProvider><Pokedex /></PokemonProvider>} />
   </Routes>
 
     </Router>
