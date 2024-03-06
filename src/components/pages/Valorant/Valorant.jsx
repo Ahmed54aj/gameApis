@@ -16,7 +16,6 @@ const valorantCtx = useContext(ValorantContext)
     // log for clarification
     const {valorantData, showModal, handleClose,  currentAgent, } = valorantCtx;
     // return component
-    console.log(currentAgent)
     return (
         <main id='valorant-main' >
         <Container  id='valorant-container' fluid={true} className="p-0">
