@@ -10,7 +10,10 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 // chartjs
 import { Pie } from 'react-chartjs-2';
-
+import { Chart, Tooltip, Legend } from 'chart.js';
+import { ArcElement } from "chart.js";
+// Register ArcElement
+Chart.register(ArcElement,Tooltip, Legend);
 // context
 import useFetch from '../../../hooks/useFetch';
 import useFetchSelectedPokemon from '../../../hooks/useFetchSelectedPokemon';
@@ -32,14 +35,47 @@ useEffect(() => {
 const fetchData = async (url) => {
   const response = await fetch(url);
   const data = await response.json();
-  console.log(data);
   setFetchedPokemon(data);
 };
-// using chartjs states
-// goals is:
-// import chart
-// when 
-const [chartDataset, setChartDataset] = useState({});
+const [chartData, setChartData] = useState({
+  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  datasets: [{
+    label: `${selectedItem.name}`,
+    data: [20, 19, 3, 5, 2, 3],
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)'
+    ],
+    borderColor: [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+  }]
+});
+const [chartOptions, setChartOptions] = useState({
+  responsive: true,
+  plugins: {
+    legend: {
+      enabled: true,
+    },
+    tooltip: {
+      enabled: true, // Enable tooltips
+  },
+    title: {
+      display: true,
+      text: 'Pie Chart Example'
+    }
+  }
+});
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(5);
@@ -64,9 +100,39 @@ const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
     setCurrentPage(1);
   };
 
+
+
+// goals:
+/*
+1) created helper function that takes in the fetched item
+2) parses the stats
+3) sets labels to the stat name using .filter()
+4) sets the data to the stats numbers using .filter()
+4) set chart data using setChartData() state setter
+*/
+
+function getStats(fetchedPokemon) {
+  let statsLabels = [];
+  setStatLabels(fetchedPokemon.stats, statsLabels);
+ 
+// fetchedPokemon.stats && 
+// setChartData({
+
+// })
+}
+
+function setStatLabels(stats, statsLabels) {
+stats.forEach((stat) => {
+statsLabels.push(stat.stat.name)
+  })
+  return statsLabels;
+}
+
+
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setShowModal(true);
+    getStats(fetchedPokemon);
   };
 
   const handlePokemonSearch = (value) => {
@@ -84,7 +150,6 @@ const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   const closeModal = () => {
     setShowModal(false);
   };
-// useFetchSelectedPokemon(selectedItem.url,  fetchedPokemon, setFetchedPokemon);
     // return component
     return (
     <section id='pokemon-table-section'>
@@ -114,7 +179,6 @@ const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
             <option value={data.length}>All</option>
           </Form.Control>
         </div>
-        
         </Form.Group>
 {/* page changiong buttons */}
         <Pagination id='page-number-container'>
@@ -174,7 +238,7 @@ const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
        
         </AccordionDetails>
       </Accordion>
-    
+      <Pie data={chartData} options={chartOptions}/>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={closeModal}>

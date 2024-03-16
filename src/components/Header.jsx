@@ -20,17 +20,26 @@ return (
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
+            {/* home  */}
             <Nav.Link href="/">Home</Nav.Link>
             <NavDropdown title="Search Games" id="basic-nav-dropdown">
-              <NavDropdown.Item href="/zelda">Zelda Games</NavDropdown.Item>
+           {/* Zelda */}
+            <NavDropdown title="Zelda" id="basic-nav-dropdown">
+           <NavDropdown.Item href="/zelda">Zelda Games</NavDropdown.Item>
+                </NavDropdown>       
+              {/* valorant */}
+              <NavDropdown title="Valorant" id="basic-nav-dropdown">
               <NavDropdown.Item href="/valorant">
                 Valorant Agents
               </NavDropdown.Item>
+              </NavDropdown>       
+             {/* monster hunter */}
               <NavDropdown title="Monster Hunter" id="basic-nav-dropdown">
               <NavDropdown.Item href="/mhwWeapons">
                 Monster Hunter World Weapons
               </NavDropdown.Item>
                 </NavDropdown>
+               {/* pokemon */}
                 <NavDropdown title="Pokemon" id="basic-nav-dropdown">
               <NavDropdown.Item href="/pokedex">
                 Pokedex
