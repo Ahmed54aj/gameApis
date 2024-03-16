@@ -113,22 +113,30 @@ const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
 
 function getStats(fetchedPokemon) {
   let statsLabels = [];
+  let statData = [];
   setStatLabels(fetchedPokemon.stats, statsLabels);
- 
+  setStatData(fetchedPokemon.stats, statData);
+  console.log(statsLabels,statData)
 // fetchedPokemon.stats && 
 // setChartData({
 
 // })
 }
-
+// setting stat labels
 function setStatLabels(stats, statsLabels) {
 stats.forEach((stat) => {
 statsLabels.push(stat.stat.name)
   })
   return statsLabels;
 }
+// setting stat data
+function setStatData(stats, statData) {
 
-
+  stats.forEach((stat) => {
+  statData.push(stat.base_stat)
+    })
+    return statData;
+  }
   const handleItemClick = (item) => {
     setSelectedItem(item);
     setShowModal(true);
