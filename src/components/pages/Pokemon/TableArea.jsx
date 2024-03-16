@@ -101,26 +101,35 @@ const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
   };
 
 
-
-// goals:
-/*
-1) created helper function that takes in the fetched item
-2) parses the stats
-3) sets labels to the stat name using .filter()
-4) sets the data to the stats numbers using .filter()
-4) set chart data using setChartData() state setter
-*/
-
 function getStats(fetchedPokemon) {
   let statsLabels = [];
   let statData = [];
   setStatLabels(fetchedPokemon.stats, statsLabels);
   setStatData(fetchedPokemon.stats, statData);
-  console.log(statsLabels,statData)
-// fetchedPokemon.stats && 
-// setChartData({
-
-// })
+setChartData({
+  labels: statsLabels,
+  datasets: [{
+    label: `Base Stat`,
+    data: statData,
+    backgroundColor: [
+      'rgba(255, 99, 132, 0.2)',
+      'rgba(54, 162, 235, 0.2)',
+      'rgba(255, 206, 86, 0.2)',
+      'rgba(75, 192, 192, 0.2)',
+      'rgba(153, 102, 255, 0.2)',
+      'rgba(255, 159, 64, 0.2)'
+    ],
+    borderColor: [
+      'rgba(255, 99, 132, 1)',
+      'rgba(54, 162, 235, 1)',
+      'rgba(255, 206, 86, 1)',
+      'rgba(75, 192, 192, 1)',
+      'rgba(153, 102, 255, 1)',
+      'rgba(255, 159, 64, 1)'
+    ],
+    borderWidth: 1
+  }]
+})
 }
 // setting stat labels
 function setStatLabels(stats, statsLabels) {
@@ -131,7 +140,6 @@ statsLabels.push(stat.stat.name)
 }
 // setting stat data
 function setStatData(stats, statData) {
-
   stats.forEach((stat) => {
   statData.push(stat.base_stat)
     })
