@@ -3,7 +3,8 @@ import { Pagination, Form, Modal, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // autocomplete for weapon search
 import { TextField, Autocomplete } from '@mui/material';
-
+// background imgage for table area
+import nx from './nx.png'; 
 // according imports for weapon info
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -20,6 +21,7 @@ import useFetchSelectedPokemon from '../../../hooks/useFetchSelectedPokemon';
 import { useContext } from 'react';
 import PokemonContext from '../../../Context/Pokemon';
 import { light } from '@mui/material/styles/createPalette';
+import zIndex from '@mui/material/styles/zIndex';
 function TableArea() {
   const [selectedItem, setSelectedItem] = useState({
     name:"bulbasaur", url:"https://pokeapi.co/api/v2/pokemon/1/"});
@@ -157,6 +159,8 @@ function setStatData(stats, statData) {
       const selectedPokemon = data.find(item => item.name === value);
       setSelectedItem(selectedPokemon);
       setShowModal(true);
+      getStats(fetchedPokemon);
+      console.log(fetchedPokemon)
     } else {
       return
     }
@@ -168,10 +172,31 @@ function setStatData(stats, statData) {
   };
     // return component
     return (
-    <section id='pokemon-table-section'>
-       <div id="search-area">
-          <div className='search-container' >
+    <section id='pokemon-table-section' 
+    style={{backgroundColor:'rgba(0,0,0,0.4)',
+    position: 'absolute',
+    width:'50%',
+    borderRadius: '5vh',
+    height: '50%',
+     display:'flex',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+       justifyContent: 'center',
+        alignItems:'center'}}>
+
+
+       <div id="pokedex-search-area" 
+           style={{
+            backgroundColor:'rgba(255,255,255,0.8)',
+     display:'flex',
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      justifyContent: 'center', 
+         alignItems: 'center'
+        }} 
+     >
           <Autocomplete
+    
           autoHighlight={true}
           disablePortal
           id="pokemon-search"
@@ -183,59 +208,14 @@ function setStatData(stats, statData) {
           sx={{ width: 300 }}
           renderInput={(params) => <TextField  {...params} label={`Pokemon Search`} />}
         />
-          </div>
-          {/* items per page */}
-        <Form.Group controlId="itemsPerPageSelect">
-        <div className='search-container' >
-        <Form.Label style={{color:'white'}}>Rows:</Form.Label>
-          <Form.Control style={{margin:'10px'}} as="select" onChange={handleItemsPerPageChange} value={itemsPerPage}>
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={15}>15</option>
-            <option value={data.length}>All</option>
-          </Form.Control>
         </div>
-        </Form.Group>
-{/* page changiong buttons */}
-        <Pagination id='page-number-container'>
-          <div id="pagination-btn-container">
-          <Button onClick={() => { setCurrentPage(1)}}>&#60;&#60;</Button>
-          <Button onClick={() => { if (currentPage !== 1) {setCurrentPage(currentPage - 1)}}}>&#60;</Button>
-          <p style={{color: 'white', width: '2rem', textAlign: 'center'}}>{currentPage}</p>
-          <Button onClick={() => { if (currentPage < (data.length / itemsPerPage)) {setCurrentPage(currentPage + 1)}}}>&#62;</Button>
-          <Button onClick={() => { setCurrentPage(Math.ceil((data.length / itemsPerPage)))}}>&#62;&#62;</Button>
-          </div>
-        </Pagination>
-        </div>
-
-       
- <table id='pokemon-table' style={{marginBottom:25}}>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((item, index) => (
-              <tr className='weapon-item' key={index} onClick={() => handleItemClick(item)}>
-                <td>{item.name}</td>
-                <td>2</td>
-                <td>3</td>
-                <td>4</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
 {/* modal */}
-<Modal show={showModal} onHide={closeModal}>
+<Modal show={showModal} onHide={closeModal} >
         <Modal.Header closeButton className='pokemon-modal-header'>
           {/* title info */}
           <Modal.Title>{selectedItem && selectedItem.name.toUpperCase()}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body style={{backgroundImage: fetchedPokemon.sprites && `url(${fetchedPokemon.sprites.front_default})`, backgroundPosition:'center', backgroundRepeat:'no-repeat', backgroundSize:'cover', zIndex:0}  }>
       <Accordion>
         <AccordionSummary
           // expandIcon={<ExpandMoreIcon />}
@@ -246,7 +226,6 @@ function setStatData(stats, statData) {
         </AccordionSummary>
         <AccordionDetails>
           <ul>
-            
           {fetchedPokemon.abilities ? fetchedPokemon.abilities.map((ability) => {
           return <li key={ability.ability.name}>{ability.ability.name}</li>
         }): <li></li>}

@@ -13,6 +13,7 @@ import { TextGeometry } from "three/addons/geometries/TextGeometry.js";
 import { FontLoader } from "three/examples/jsm/loaders/FontLoader";
 function Pokeball() {
 useEffect(() => {
+   
     // const pokeArea = document.getElementById('pokemon-section');
     document.querySelector('#pokeball-area').append(renderer.domElement);
 }, []);
@@ -54,7 +55,7 @@ camera.position.y = 0;
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.VSMShadowMap;
-renderer.setSize(window.innerWidth, (window.innerHeight / 4));
+renderer.setSize(window.innerWidth, (window.innerHeight * .82));
 renderer.setClearColor(0xffffff, 1);
 // 5) add lights
 const ambientLight = new THREE.AmbientLight(0xffffff,  0.8); // Soft white light, half intensity
@@ -122,13 +123,14 @@ const outlineMaterial = new THREE.MeshBasicMaterial({
 
 function animate() {
       requestAnimationFrame(animate);
+      
       controls.update();
       renderer.render(scene, camera);
   }
   animate();
     return (
 
-        <section id='pokeball-area'>
+        <section id='pokeball-area' style={{height: '81vh'}}>
      
         </section>
     );

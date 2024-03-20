@@ -4,7 +4,11 @@ import Pokeball from './Pokeball';
 import TableArea from './TableArea';
 function Pokedex() {
   return (
-    <main style={{height: '80.3vh'}}>
+    <main id='pokedex-main' style={{ height: '100%', position: 'relative',  display:'flex',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+     justifyContent: 'center',
+      alignItems:'center'}}>
       <Pokeball />
       <TableArea />
     </main>
