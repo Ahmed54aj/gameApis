@@ -182,7 +182,10 @@ function setStatData(stats, statData) {
       flexDirection: 'column',
       flexWrap: 'wrap',
        justifyContent: 'center',
-        alignItems:'center'}}>
+        alignItems:'center',
+        minWidth: '300px',
+        minHeight: '500px'
+        }}>
 
 
        <div id="pokedex-search-area" 
