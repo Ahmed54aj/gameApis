@@ -34,7 +34,7 @@ scene.background = texture;
 // 2) load the model
 const pokeball_loader = new GLTFLoader();
 let ball
-pokeball_loader.load( 'object.glb', function (gltf) {
+pokeball_loader.load( 'object.json', function (gltf) {
     ball = gltf.scene;
     ball.scale.set(1,  1,  1);
     ball.position.x = -5.4;
