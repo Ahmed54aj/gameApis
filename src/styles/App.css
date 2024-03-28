@@ -7,8 +7,6 @@
 @import url('./Valorant.css');
 /* monster hunter css */
 @import url('./MonsterHunter/mhwWeapons.css');
-/* pokemon css */
-@import url('Pokedex.css');
 /* main css */
 * {
   margin: 0;
